@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace musicTheoryApp
 {
@@ -9,15 +10,20 @@ namespace musicTheoryApp
             bool runLoop = true;
             while(runLoop)
             {
+                Console.Clear();
                 Console.WriteLine("choose an option");
-                Console.WriteLine("1 - scales 2 - quiz - 3 quiz results 4 - print results");
+                Console.WriteLine("\n1 scales\n2 quiz\n3 quiz results\n4 print results");
+                Console.WriteLine("\nType the corresponding number and press ENTER\n");
+
                 string navigateString = Console.ReadLine();
                 int navigate = int.Parse(navigateString);
 
                 switch (navigate)
                 {
                     case 1:
-                        Console.WriteLine("scales");
+                        Console.Clear();
+                        Console.WriteLine("Major Scale\nHas a bright sound and a major third\n\nExamples\nC Major: C D E F G A B C\nEb Major: Eb F G Ab Bb C D Eb\n");
+                        Console.WriteLine("Minor Scale\nHas a dark sound and a minor third\n\nExamples\nA Minor: A B C D E F G A\nC Minor: C D Eb F G Ab Bb C\n");
                         break;
 
                     case 2:
