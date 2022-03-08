@@ -7,6 +7,52 @@ namespace musicTheoryApp
     {
         static void Main(string[] args)
         {
+            List<Questions> questionsList = new List<Questions>();
+
+            Questions.Initialize(); 
+
+
+            Questions question1 = new Questions
+            {
+                QuestionNumber = 1,
+                Question = "Is this major or minor??\nC D E F G A B C",
+                Answer = "Major"
+            };
+
+            Questions question2 = new Questions
+            {
+                QuestionNumber = 2,
+                Question = "Is this major or minor??\nA B C D E F G A",
+                Answer = "Minor"
+            };
+
+            Questions question3 = new Questions
+            {
+                QuestionNumber = 3,
+                Question = "Is this major or minor??\nEb F G Ab Bb C D Eb",
+                Answer = "Major"
+            };
+
+            Questions question4 = new Questions
+            {
+                QuestionNumber = 4,
+                Question = "Is this major or minor??\nC D Eb F G Ab Bb C",
+                Answer = "Minor"
+            };
+
+            Questions question5 = new Questions
+            {
+                QuestionNumber = 5,
+                Question = "Bonus Question! Is this major or minor??\nF G A Bb C D E F",
+                Answer = "Major"
+            };
+
+            questionsList.Add(question1);
+            questionsList.Add(question2);
+            questionsList.Add(question3);
+            questionsList.Add(question4);
+            questionsList.Add(question5);
+
             bool runLoop = true;
             while(runLoop)
             {
@@ -37,10 +83,6 @@ namespace musicTheoryApp
                     case 4:
                         Console.WriteLine("print");
                         break;
-
-                    case 5:
-                        Console.WriteLine("quiz");
-                        break;
                 }
 
                 Console.WriteLine("back to menu? yes or no");
@@ -51,6 +93,23 @@ namespace musicTheoryApp
                     runLoop = false;
                 }
 
+            }
+        }
+
+        public class Questions
+        {
+            public int QuestionNumber { get; set; }
+            public string Question { get; set; }
+            public string Answer { get; set; }
+
+            public static void Initialize()
+            {
+                Questions question1 = new Questions
+                {
+                    QuestionNumber = 1,
+                    Question = "Is this major or minor??\nC D E F G A B C",
+                    Answer = "Major"
+                };
             }
         }
     }
