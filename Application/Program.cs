@@ -17,7 +17,7 @@ namespace musicTheoryApp
             {
                 Console.Clear();
                 Console.WriteLine("choose an option");
-                Console.WriteLine("\n1 scales\n2 quiz\n3 quiz results\n4 print results");
+                Console.WriteLine("\n1 scales\n2 quiz\n3 quiz results\n4 convert temperature");
                 Console.WriteLine("\nType the corresponding number and press ENTER\n");
 
                 string navigateString = Console.ReadLine();
@@ -55,7 +55,6 @@ namespace musicTheoryApp
                             i++;
                         }
                         totalQuestions += 5;
-
                         break;
 
                     case 3:
@@ -64,15 +63,46 @@ namespace musicTheoryApp
                         Console.WriteLine(correctAnswers + " out of " + totalQuestions);
                         double displayPercentage = Questions.CalculatePercentageCorrect(correctAnswers, totalQuestions);
                         Console.WriteLine((displayPercentage * 100).ToString("##.##") + "%");
-
                         break;
 
                     case 4:
-                        Console.WriteLine("print");
+                        Console.Clear();
+                        Console.WriteLine("convert temperature\n");
+                        Console.WriteLine("press 1 for Fahrenheit to Celsius");
+                        Console.WriteLine("press 2 for Celsius to Fahrenheit");
+                        string temperatureTypeConvertString = Console.ReadLine();
+                        int temperatureTypeConvert = int.Parse(temperatureTypeConvertString);
+
+                        switch (temperatureTypeConvert)
+                        {
+                            case 1:
+                                Console.WriteLine("\nEnter the temperature in Fahrenheit\n");
+                                string temperatureFahrenheitString = Console.ReadLine();
+                                int temperatureFahreheit = int.Parse(temperatureFahrenheitString);
+                                double convertedTemperatureCelsius = TemperatureConversion.ConvertFToC(Convert.ToDouble(temperatureFahreheit));
+                                if (convertedTemperatureCelsius == 0)
+                                {
+                                    Console.WriteLine("0C");
+                                }
+                                Console.WriteLine(convertedTemperatureCelsius.ToString("##.##") + "C");
+                                break;
+
+                            case 2:
+                                Console.WriteLine("\nEnter the temperature in Celsius");
+                                string temperatureCelsiusString = Console.ReadLine();
+                                int temperatureCelsius = int.Parse(temperatureCelsiusString);
+                                double convertedTemperatureFahrenheit = TemperatureConversion.ConvertCToF(Convert.ToDouble(temperatureCelsius));
+                                if (convertedTemperatureFahrenheit == 0)
+                                {
+                                    Console.WriteLine("0F");
+                                }
+                                Console.WriteLine(convertedTemperatureFahrenheit.ToString("##.##") + "F");
+                                break;
+                        }
                         break;
                 }
 
-                Console.WriteLine("back to menu? yes or no");
+                Console.WriteLine("\nback to menu? yes or no");
                 string loopOrExit = Console.ReadLine();
                 if (loopOrExit == "no")
                 {
@@ -140,12 +170,24 @@ namespace musicTheoryApp
                 {
                     double percentageCorrect = Convert.ToDouble(correctAnswers) / Convert.ToDouble(totalQuestions);
                     return percentageCorrect;
-
                 }
                 else
                 {
                     return 0;
                 }
+            }
+        }
+        public class TemperatureConversion
+        {
+            public static double ConvertFToC(double temperatureFahrenheit)
+            {
+                double temperatureCelsius = (temperatureFahrenheit - 32) * .5556;
+                return temperatureCelsius;
+            }
+            public static double ConvertCToF(double temperatureCelsius)
+            {
+                double temperatureFahrenheit = (temperatureCelsius * 1.8) + 32;
+                return temperatureFahrenheit;
             }
         }
     }
