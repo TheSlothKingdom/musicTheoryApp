@@ -78,6 +78,7 @@ namespace musicTheoryApp
                             case 1:
                                 Console.WriteLine("\nEnter the temperature in Fahrenheit\n");
                                 string temperatureFahrenheitString = Console.ReadLine();
+                                Console.WriteLine("");
                                 int temperatureFahreheit = int.Parse(temperatureFahrenheitString);
                                 double convertedTemperatureCelsius = TemperatureConversion.ConvertFToC(Convert.ToDouble(temperatureFahreheit));
                                 if (convertedTemperatureCelsius == 0)
@@ -90,6 +91,7 @@ namespace musicTheoryApp
                             case 2:
                                 Console.WriteLine("\nEnter the temperature in Celsius");
                                 string temperatureCelsiusString = Console.ReadLine();
+                                Console.WriteLine("");
                                 int temperatureCelsius = int.Parse(temperatureCelsiusString);
                                 double convertedTemperatureFahrenheit = TemperatureConversion.ConvertCToF(Convert.ToDouble(temperatureCelsius));
                                 if (convertedTemperatureFahrenheit == 0)
